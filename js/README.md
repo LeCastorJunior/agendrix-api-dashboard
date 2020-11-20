@@ -1,4 +1,4 @@
-## [Agendrix](https://www.agendrix.com/)'s public API integration example
+## [Agendrix](https://www.agendrix.com/)'s public API JS integration example
 
 This project is an example of how to integrate with Agendrix's public API, from the OAuth authentication to making calls to the API itself. Both the client and the server are in Typescript. The client app uses [React](https://reactjs.org/) while the server uses [Express](https://expressjs.com/).
 
