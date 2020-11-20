@@ -1,0 +1,26 @@
+<div class="flex justify-center">
+  <a class="absolute top-0 left-0 m-4" href="/">
+    <--
+  </a>
+  <div class="w-11/12">
+    <h1 class="text-2xl text-center mt-4 mb-6 underline">
+      My Agendrix's Profile
+    </h1>
+    <table class="mx-auto table-auto">
+      <thead>
+        <tr>
+          <th class="px-4">Email</th>
+          <th class="px-4">First Name</th>
+          <th class="px-4">Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="px-4"><%= @user["email"] %></td>
+          <td class="px-4"><%= @user["profile"]["first_name"] %></td>
+          <td class="px-4"><%= @user["profile"]["last_name"] %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

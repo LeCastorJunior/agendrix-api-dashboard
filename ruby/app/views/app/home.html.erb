@@ -1,0 +1,35 @@
+<div class="flex relative w-full">
+  <div class="m-auto">
+    <div class="text-2xl text-center my-4 underline">Agendrix's Public API Integration Example - Ruby on Rails</div>
+    <div class="flex flex-col my-4">
+      <h2 class="text-xl italic my-2">Authorization Request</h2>
+      <div class="block border border-gray-800 text-gray-800 rounded-md p-2 my-2 mx-auto">
+        <%= raw(authorization_request_url) %>
+      </div>
+      <a
+        class="border border-gray-800 rounded text-gray-800 p-2 my-1 mx-auto focus:outline-none hover:border-black hover:text-black"
+        href=<%= raw(authorization_request_url) %>
+      >
+        Send Request
+      </a>
+    </div>
+    <div class="flex flex-col my-4">
+      <div class="flex justify-between">
+        <a
+          class="border border-gray-800 rounded text-gray-800 p-2 my-1 mx-auto focus:outline-none hover:border-black hover:text-black"
+          href="/integrations/agendrix/my-profile"
+        >
+          See my Agendrix's profile
+        </a>
+        <a
+          class="border border-gray-800 rounded text-gray-800 p-2 my-1 mx-auto focus:outline-none hover:border-black hover:text-black"
+          href="/integrations/agendrix/my-organization-positions"
+        >
+          See my linked organization's positions
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+

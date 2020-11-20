@@ -1,0 +1,28 @@
+<div class="flex justify-center">
+  <a class="absolute top-0 left-0 m-4" href="/">
+    <--
+  </a>
+  <div class="w-11/12">
+    <h1 class="text-2xl text-center mt-4 mb-6 underline">
+      My Agendrix's Organization Positions
+    </h1>
+     <table class="mx-auto table-auto">
+      <thead>
+        <tr>
+          <th class="px-4">Rank</th>
+          <th class="px-4">Name</th>
+          <th class="px-4">Color</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @positions.each do |position| %>
+          <tr>
+            <td class="px-4"><%= position["rank"] %></td>
+            <td class="px-4"><%= position["name"] %></td>
+            <td class="px-4"><%= position["color"] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
