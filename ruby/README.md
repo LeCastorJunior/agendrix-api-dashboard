@@ -1,4 +1,4 @@
-## [Agendrix](https://www.agendrix.com/)'s public API integration example
+## [Agendrix](https://www.agendrix.com/)'s public API Ruby on Rails integration example
 
 This project is an example of how to integrate with Agendrix's public API, from the OAuth authentication to making calls to the API itself. The example is built with [Ruby on Rails](https://rubyonrails.org/).
 
