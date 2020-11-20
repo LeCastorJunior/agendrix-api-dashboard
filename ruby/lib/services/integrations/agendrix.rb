@@ -1,4 +1,4 @@
-module App
+module Services
   module Integrations
     module Agendrix
       class APIError < StandardError

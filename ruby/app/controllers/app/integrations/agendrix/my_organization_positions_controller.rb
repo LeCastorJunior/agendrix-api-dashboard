@@ -3,7 +3,7 @@ module App
     module Agendrix
       class MyOrganizationPositionsController < BaseController
         def index
-          data, error = exec({ method: :get, url: "/v1/positions" })
+          data, error = api_provider.send({ method: :get, url: "/v1/positions" })
           @positions = data || []
 
           flash.now.notice = error if error.present?

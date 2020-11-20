@@ -28,4 +28,16 @@ module Services
       raise StandardError, "Cannot initialize base server class"
     end
   end
+
+  class MissingCookieError < StandardError
+  end
+
+  class InvalidCookieError < StandardError
+  end
+
+  class RefreshTokenError < StandardError
+  end
+
+  class InvalidHTTPMethodError < StandardError
+  end
 end

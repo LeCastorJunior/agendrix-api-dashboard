@@ -15,12 +15,12 @@ module App
 
           body = response.body
           if response.success?
-            store_oauth_data(body)
+            cookies.signed[:oauth_data] = { value: JSON.generate(body), httponly: true }
           end
 
-          redirect_to app_root_url, notice: response.success? ? "Success" : "Error: #{body[:error_description]}"
+          redirect_to app_root_url, notice: response.success? ? "Success" : "Error: #{body["error_description"]}"
         rescue => exception
-          redirect_to app_root_url, notice: "Error #{exception}"
+          redirect_to app_root_url, notice: "Error: #{exception}"
         end
       end
     end

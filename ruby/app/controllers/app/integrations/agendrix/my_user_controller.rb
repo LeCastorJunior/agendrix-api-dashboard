@@ -3,7 +3,7 @@ module App
     module Agendrix
       class MyUserController < BaseController
         def index
-          data, error = exec({ method: :get, url: "/v1/users/me" })
+          data, error = api_provider.send({ method: :get, url: "/v1/users/me" })
           @user = data || { "email": "", "profile": { "first_name": "", "last_name": "" }}
 
           flash.now.notice = error if error.present?
