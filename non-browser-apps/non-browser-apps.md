@@ -1,6 +1,6 @@
 # Browserless access to the API
 
-## introduction
+## Introduction
 
 If you wish to use our API with only a backend or a script, this guide will help you with the process of connecting you to the API. If your application is served through a browser, you can look at our [Javascript](https://github.com/agendrix/public-api-integration-examples/tree/main/js) and [Ruby](https://github.com/agendrix/public-api-integration-examples/tree/main/ruby) exemple.
 You will find below the only 2 ways to access our API natively.
@@ -13,7 +13,7 @@ can use your script or a backend to refresh the tokens. An example on how to ref
 
 ## Using a redirect URI
 
-Another way to use our API without a browser is to use a  special redirect URI. Here is a bash exemple for this use case : 
+Another way to use our API without a browser is to use a special redirect URI. Here is a bash exemple for this use case : 
 ```bash
 CLIENT_ID='YOUR_CLIENT_ID_HERE'
 CLIENT_SECRET='YOUR_CLIENT_SECRET_HERE'
