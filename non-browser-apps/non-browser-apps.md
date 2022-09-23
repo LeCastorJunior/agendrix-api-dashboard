@@ -2,7 +2,7 @@
 
 ## Introduction
 
-If you wish to use our API with only a backend or a script, this guide will help you with the process of connecting you to the API. If your application is served through a browser, you can look at our [Javascript](https://github.com/agendrix/public-api-integration-examples/tree/main/js) and [Ruby](https://github.com/agendrix/public-api-integration-examples/tree/main/ruby) exemple.
+If you wish to use our API with only a backend or a script, this guide will help you with the process of connecting you to the API. If your application is served through a browser, you can look at our [Javascript](https://github.com/agendrix/public-api-integration-examples/tree/main/js) and [Ruby](https://github.com/agendrix/public-api-integration-examples/tree/main/ruby) examples.
 You will find below the 2 ways to access our API natively.
 
 
