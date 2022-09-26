@@ -18,7 +18,7 @@ Another way to use our API without a browser is to use a special redirect URI. H
 CLIENT_ID='YOUR_CLIENT_ID_HERE'
 CLIENT_SECRET='YOUR_CLIENT_SECRET_HERE'
 
-open "https://app.agendrix.com/oauth/authorize?client_id=$CLIENT_ID&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&scope=read+write"
+open "https://app.agendrix.com/oauth/authorize?client_id=$CLIENT_ID&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code&scopes=read+write"
 
 echo "Authorization code :"
 read CODE
