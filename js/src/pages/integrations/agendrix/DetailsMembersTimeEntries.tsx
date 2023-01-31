@@ -27,7 +27,7 @@ const DetailsMembersTimeEntries: React.FC = (props: any) => {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [membersAE.id, membersAE.main_position_id]);
 
   useEffect(() => {
     fetchmembers();
@@ -53,7 +53,7 @@ const DetailsMembersTimeEntries: React.FC = (props: any) => {
     };
 
     fetchData();
-  }, []);
+  }, [membersAE.id, membersAE.main_position_id]);
 
   const [response, setResponse] = useState(null);
 
@@ -128,7 +128,10 @@ const DetailsMembersTimeEntries: React.FC = (props: any) => {
           ))}
         </Container>
         <Container className="m-4">
-          <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button
+            onClick={handleClick}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          >
             Send facture to Draft
           </button>
         </Container>

@@ -51,7 +51,7 @@ const MyTeamMembersAE: React.FC = () => {
           setListId(resp);
         };
         parse();
-        return;
+        return [];
       });
     };
     test();
