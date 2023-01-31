@@ -27,7 +27,7 @@
   "scripts": {
     "start": "yarn compile:css && yarn start:app",
     "start:app": "npm-run-all --parallel watch:server start:web",
-    "start:web": "HTTPS=true react-app-rewired start",
+    "start:web": "HTTPS=true react-app-rewired --openssl-legacy-provider start",
     "start:server": "ts-node -P tsconfig.server.json server",
     "watch:server": "nodemon --exec 'ts-node -P tsconfig.server.json' --watch server server",
     "compile:css": "postcss src/css/tailwind.css -o src/css/main.css",

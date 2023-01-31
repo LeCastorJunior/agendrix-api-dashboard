@@ -13,7 +13,7 @@ export default async (
   try {
     const response = await axios(apiRequest);
     const data = await response.data;
-
+    
     res.status(200).json(data);
   } catch (e) {
     if (!findExpiredTokenError(e.response.data.errors)) {

@@ -1,10 +1,8 @@
 import React, { useEffect, useCallback } from "react";
 import { useLocation } from "react-router-dom";
-
 import { redirectURI, oauthProvider } from "../../shared/uris";
 import { clientID, scopes } from "../../shared/credentials";
 import ServerAPI from "../services/ServerAPI";
-
 import "../css/main.css";
 
 const authRequest = `${oauthProvider}/authorize?redirect_uri=${redirectURI}&client_id=${clientID}&scope=${scopes}&response_type=code`;
@@ -70,6 +68,12 @@ const Home: React.FC = () => {
               href="/integrations/agendrix/my-organization-positions"
             >
               See my linked organization's positions
+            </a>
+            <a
+              className={buttonClassNames}
+              href="/integrations/agendrix/my-team-members-ae"
+            >
+              See my linked team members AE
             </a>
           </div>
         </div>

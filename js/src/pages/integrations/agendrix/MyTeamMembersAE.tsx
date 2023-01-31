@@ -1,40 +1,63 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Container, Row, Col } from "react-grid-system";
 import Loading from "react-loading";
+import { Link } from "react-router-dom";
 
 import ServerAPI from "../../../services/ServerAPI";
 import { HandleServerErrors } from "./utils";
+import { FinderShift } from "./utils";
+import { FindListShift } from "./utils";
 
-const MyOrganizationPositions: React.FC = () => {
+const MyTeamMembersAE: React.FC = () => {
   const [pageSize, setPageSize] = useState<string>("50");
   const [pageNumber, setPageNumber] = useState<string>("1");
   const [pageLimit, setPageLimit] = useState<string>("");
-  const [sort, setSort] = useState<string>("sort[rank]=asc");
-  const [search, setSearch] = useState<string>("");
-  const [positions, setPositions] = useState<Array<GenericObject>>([]);
+  const [search, setSearch] = useState<string>(
+    "search[main_position_id]=8b91c0e8-a0f5-4a13-97b3-5d0ab69170db"
+  );
+  const [members, setmembers] = useState<Array<GenericObject>>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const fetchPositions = useCallback(async (): Promise<void> => {
+  const fetchmembers = useCallback(async (): Promise<void> => {
     try {
       const response: GenericObject = await ServerAPI.get(
-        `/integrations/agendrix/my-organization-positions?page=${pageNumber}&page_size=${pageSize}${
+        `/integrations/agendrix/my-organization-members-ae?page=${pageNumber}&page_size=${pageSize}${
           pageLimit ? `&limit=${pageLimit}` : ""
-        }${sort ? `&${sort}` : ""}${search ? `&${search}` : ""}`
+        }${search ? `&${search}` : ""}`
       );
       const result = await response.json();
-
-      if (response.ok) setPositions([...result.data]);
+      if (response.ok) setmembers([...result.data]);
       else HandleServerErrors(result);
     } catch (e: any) {
       alert(e.message);
     } finally {
       setIsLoading(false);
     }
-  }, [pageLimit, pageNumber, pageSize, search, sort]);
+  }, [pageLimit, pageNumber, pageSize, search]);
 
   useEffect(() => {
-    fetchPositions();
-  }, [fetchPositions]);
+    fetchmembers();
+  }, [fetchmembers]);
+
+  const [listId, setListId] = useState<string[]>([]);
+
+  useEffect(() => {
+    const test = async () => {
+      const liste: any = await FinderShift();
+      const resp: any = [];
+      await liste.map((id: string) => {
+        const parse = async () => {
+          resp.push(await FindListShift(id));
+          setListId(resp);
+        };
+        parse();
+        return;
+      });
+    };
+    test();
+  }, [setListId]);
+
+  console.log(listId);
 
   return isLoading ? (
     <Loading />
@@ -45,7 +68,7 @@ const MyOrganizationPositions: React.FC = () => {
       </a>
       <div className="w-11/12">
         <h1 className="text-2xl text-center mt-4 mb-6 underline">
-          My Agendrix's Organization Positions
+          My Agendrix's Organization members
         </h1>
         <div className="flex justify-between my-6">
           <div className="flex">
@@ -83,28 +106,6 @@ const MyOrganizationPositions: React.FC = () => {
             />
           </div>
           <div className="flex">
-            <span className="mr-2 my-auto">Sort: </span>
-            <input
-              className="block border border-gray-800 text-gray-800 rounded-md p-1"
-              type="text"
-              placeholder="sort[name]=asc"
-              defaultValue={sort}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                const {
-                  target: { value },
-                } = e;
-                const upperCaseValue = value.toUpperCase();
-
-                if (
-                  upperCaseValue.includes("ASC") ||
-                  upperCaseValue.includes("DESC") ||
-                  !value
-                )
-                  setSort(value);
-              }}
-            />
-          </div>
-          <div className="flex">
             <span className="mr-2 my-auto">Search: </span>
             <input
               className="block border border-gray-800 text-gray-800 rounded-md p-1"
@@ -123,16 +124,39 @@ const MyOrganizationPositions: React.FC = () => {
           </div>
         </div>
         <Container>
-          <Row className="border-b-2 border-gray-800 mb-2">
-            <Col sm={4}>Rank</Col>
-            <Col sm={4}>Name</Col>
-            <Col sm={4}>Color</Col>
+          <Row className="border-b-2 border-gray-400 mb-2">
+            <Col sm={2}>full Name</Col>
+            <Col sm={1}>birth date</Col>
+            <Col sm={3}>email</Col>
+            <Col sm={3}>address</Col>
+            <Col sm={2}>phone</Col>
+            <Col sm={1}>---</Col>
           </Row>
-          {positions.map((position: GenericObject, index: number) => (
-            <Row className="mb-2" key={index}>
-              <Col sm={4}>{position.rank}</Col>
-              <Col sm={4}>{position.name}</Col>
-              <Col sm={4}>{position.color || "-"}</Col>
+          {members.map((membersAE: GenericObject, index: number) => (
+            <Row
+              className="mb-2 text-xs 	border-b-2	border-b-amber-300"
+              key={index}
+            >
+              <Col sm={2}>{membersAE.profile.full_name}</Col>
+              <Col sm={1}>{membersAE.profile.birthdate || "-"}</Col>
+              <Col sm={3}>{membersAE.profile.email}</Col>
+              <Col sm={3}>{membersAE.profile.civic_address}</Col>
+              <Col sm={2}>{membersAE.profile.phone_1_number}</Col>
+              <Col sm={1}>
+                <Link
+                  to={{
+                    pathname:
+                      "/integrations/agendrix/detail-member-time-entries",
+                    state: {
+                      membersAE: membersAE,
+                    },
+                  }}
+                >
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Details
+                  </button>
+                </Link>
+              </Col>
             </Row>
           ))}
         </Container>
@@ -141,4 +165,4 @@ const MyOrganizationPositions: React.FC = () => {
   );
 };
 
-export default MyOrganizationPositions;
+export default MyTeamMembersAE;
