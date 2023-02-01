@@ -45,7 +45,7 @@ const MyTeamMembersAE: React.FC = () => {
       const liste: string[] = await FinderShift();
       const resp: Shift[][] = [];
 
-      const search = await liste.map((id: string) => {
+      await liste.map((id: string) => {
         const parse = async () => {
           resp.push(await FindListShift(id));
           return resp;
