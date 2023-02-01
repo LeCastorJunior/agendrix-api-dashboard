@@ -96,7 +96,6 @@ const DetailsMembersTimeEntries: React.FC = (props: any) => {
                     {key}
                   </dt>
                   <dd className="text-lg font-semibold">{`${value}`}</dd>
-                  {/* <li key={key}>{`${key}: ${value}`}</li> */}
                 </div>
               )
             )}
