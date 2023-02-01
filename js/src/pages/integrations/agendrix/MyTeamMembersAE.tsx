@@ -2,9 +2,10 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Container, Row, Col } from "react-grid-system";
 import Loading from "react-loading";
 import { Link } from "react-router-dom";
-
 import ServerAPI from "../../../services/ServerAPI";
 import { HandleServerErrors, FinderShift, FindListShift } from "./utils";
+import ButtonPost from "./component/MyTeamMember/ButtonPost";
+import { Shift } from "./interface/Shift";
 
 const MyTeamMembersAE: React.FC = () => {
   const [pageSize, setPageSize] = useState<string>("50");
@@ -37,25 +38,28 @@ const MyTeamMembersAE: React.FC = () => {
     fetchmembers();
   }, [fetchmembers]);
 
-  const [listId, setListId] = useState<string[]>([]);
+  const [btnPost, setbtnPost] = useState<any>();
 
   useEffect(() => {
     const test = async () => {
-      const liste: any = await FinderShift();
-      const resp: any = [];
-      await liste.map((id: string) => {
+      const liste: string[] = await FinderShift();
+      const resp: Shift[][] = [];
+
+      const search = await liste.map((id: string) => {
         const parse = async () => {
           resp.push(await FindListShift(id));
-          setListId(resp);
+          return resp;
         };
-        parse();
-        return [];
+
+        return parse().then((respo) => {
+          if (liste.length === respo.length) {
+            setbtnPost(<ButtonPost liste={respo}></ButtonPost>);
+          }
+        });
       });
     };
     test();
-  }, [setListId]);
-
-  console.log(listId);
+  }, [setbtnPost]);
 
   return isLoading ? (
     <Loading />
@@ -68,6 +72,7 @@ const MyTeamMembersAE: React.FC = () => {
         <h1 className="text-2xl text-center mt-4 mb-6 underline">
           My Agendrix's Organization members
         </h1>
+        <div className="flex justify-between my-6">{btnPost}</div>
         <div className="flex justify-between my-6">
           <div className="flex">
             <span className="mr-2 my-auto">Page Size: </span>
