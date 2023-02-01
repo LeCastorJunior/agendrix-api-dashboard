@@ -4,9 +4,7 @@ import Loading from "react-loading";
 import { Link } from "react-router-dom";
 
 import ServerAPI from "../../../services/ServerAPI";
-import { HandleServerErrors } from "./utils";
-import { FinderShift } from "./utils";
-import { FindListShift } from "./utils";
+import { HandleServerErrors, FinderShift, FindListShift } from "./utils";
 
 const MyTeamMembersAE: React.FC = () => {
   const [pageSize, setPageSize] = useState<string>("50");
