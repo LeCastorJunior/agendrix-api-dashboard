@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Shift } from "../../interface/Shift";
 
 interface Rider {
@@ -6,20 +6,33 @@ interface Rider {
 }
 
 const ButtonPost: React.FC<Rider> = ({ liste }) => {
-  useEffect(() => {
-    liste.map((listeSchiftByRider) => {
-      console.log(
-        "listeSchiftByRider foreach n°: " + liste.indexOf(listeSchiftByRider)
-      );
-      console.log("Rider Id: " + listeSchiftByRider[0].member_id);
-      console.log(listeSchiftByRider);
-      return [];
-    });
-  }, [liste]);
+  const [response, setResponse] = useState<string>();
 
+  const handleClick = async () => {
+    await fetch("http://localhost:4444/api/v2/test/ping", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        listeRider: liste,
+      }),
+    }).then((response) => {
+      console.log(response.headers.get("Content-Type"));
+      console.log(response.status);
+      if (response.status === 200) {
+        setResponse("Ok. Dernier envoie le : " + new Date().toISOString());
+      }
+    });
+    //const json = await result.json();
+    console.log(response);
+  };
   return (
-    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-      Send All
+    <button
+      onClick={handleClick}
+      className=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    >
+      Send All {response}
     </button>
   );
 };
