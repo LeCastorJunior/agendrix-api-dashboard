@@ -47,9 +47,9 @@ const Home: React.FC = () => {
         </h1>
         <div className="flex flex-col">
           <h2 className="text-xl italic my-2">Authorization Request</h2>
-          <div className="block border border-gray-800 text-gray-800 rounded-md p-2 my-2 mx-auto">
+          {/* <div className="block border border-gray-800 text-gray-800 rounded-md p-2 my-2 mx-auto">
             {authRequest}
-          </div>
+          </div> */}
           <button className={buttonClassNames} onClick={handleAuthorizeRequest}>
             Send Request
           </button>
@@ -57,7 +57,7 @@ const Home: React.FC = () => {
         <div className="flex flex-col">
           <h2 className="text-xl italic my-2">Use the API</h2>
           <div className="flex justify-between">
-            <a
+            {/* <a
               className={buttonClassNames}
               href="/integrations/agendrix/my-profile"
             >
@@ -68,12 +68,12 @@ const Home: React.FC = () => {
               href="/integrations/agendrix/my-organization-positions"
             >
               See my linked organization's positions
-            </a>
+            </a> */}
             <a
               className={buttonClassNames}
               href="/integrations/agendrix/my-team-members-ae"
             >
-              See my linked team members AE
+              Facturation
             </a>
           </div>
         </div>

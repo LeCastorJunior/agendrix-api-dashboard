@@ -72,8 +72,11 @@ const MyTeamMembersAE: React.FC = () => {
         <h1 className="text-2xl text-center mt-4 mb-6 underline">
           My Agendrix's Organization members
         </h1>
-        <div className="flex justify-between my-6">{btnPost}</div>
         <div className="flex justify-between my-6">
+          {btnPost}
+          </div>
+
+        {/* <div className="flex justify-between my-6">
           <div className="flex">
             <span className="mr-2 my-auto">Page Size: </span>
             <input
@@ -126,6 +129,7 @@ const MyTeamMembersAE: React.FC = () => {
             />
           </div>
         </div>
+         */}
         <Container>
           <Row className="border-b-2 border-gray-400 mb-2">
             <Col sm={2}>full Name</Col>
