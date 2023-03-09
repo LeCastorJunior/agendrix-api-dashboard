@@ -6,6 +6,8 @@ export default async (id: string): Promise<Shift[]> => {
   //todo:add generate date start and end
   const date_start = getFirstDayOfPreviousMonth();
   const date_end = getLastDayOfPreviousMonth();
+  console.log(date_start, date_end)
+  console.log("date_start, date_end")
 
   try {
     const response: GenericObject = await ServerAPI.get(
