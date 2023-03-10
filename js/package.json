@@ -31,7 +31,7 @@
     "start:server": "ts-node -P tsconfig.server.json server",
     "watch:server": "nodemon --exec 'ts-node -P tsconfig.server.json' --watch server server",
     "compile:css": "postcss src/css/tailwind.css -o src/css/main.css",
-    "build": "react-app-rewired --openssl-legacy-provider build",
+    "build": "react-app-rewired build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
