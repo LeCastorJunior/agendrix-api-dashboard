@@ -5,6 +5,6 @@
 const agendrixAPI = "https://api.agendrix.com/v1";
 const oauthProvider = "https://app.agendrix.com/oauth";
 const serverAPI = "http://54.38.191.163:4000/api"; //server api
-const redirectURI = "https://agendrix-api-dashboard-e1q8zlqwh-filoudenesque.vercel.app/home"; //redirect to app
+const redirectURI = "https://agendrix-api-dashboard-5nn7beozq-filoudenesque.vercel.app/home"; //redirect to app
 
 export { agendrixAPI, oauthProvider, serverAPI, redirectURI };
