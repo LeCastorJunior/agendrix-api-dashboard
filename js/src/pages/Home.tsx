@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { redirectURI, oauthProvider } from "../../shared/uris";
 import { clientID, scopes } from "../../shared/credentials";
 import ServerAPI from "../services/ServerAPI";
-//import "../css/main.css";
+import "../src/css/main.css";
 
 const authRequest = `${oauthProvider}/authorize?redirect_uri=${redirectURI}&client_id=${clientID}&scope=${scopes}&response_type=code`;
 const buttonClassNames =
