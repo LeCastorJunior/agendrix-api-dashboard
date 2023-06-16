@@ -407,3 +407,4 @@ node_modules/vary/index.js
 node_modules/vary/LICENSE
 node_modules/vary/README.md
 .gitignore
+.vscode/settings.json
