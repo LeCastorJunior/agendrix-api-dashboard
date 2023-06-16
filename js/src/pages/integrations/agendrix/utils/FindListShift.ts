@@ -23,17 +23,31 @@ export default async (id: string): Promise<Shift[]> => {
 };
 
 function getFirstDayOfPreviousMonth(): string {
-  let date = new Date();
-  let firstDayOfPreviousMonth = new Date(
-    date.getFullYear(),
-    date.getMonth() - 1,
-    1
-  );
-  return firstDayOfPreviousMonth.toISOString();
+	let date = new Date();
+
+	let firstDayOfPreviousMonth = new Date(
+		date.getFullYear(),
+		date.getMonth() - 1,
+		1,
+		2,
+		0,
+		0
+	);
+
+	return firstDayOfPreviousMonth.toISOString();
 }
 
 function getLastDayOfPreviousMonth(): string {
-  let date = new Date();
-  let lastDayOfPreviousMonth = new Date(date.getFullYear(), date.getMonth(), 0);
-  return lastDayOfPreviousMonth.toISOString();
+	let date = new Date();
+
+	let lastDayOfPreviousMonth = new Date(
+		date.getFullYear(),
+		date.getMonth(),
+		0,
+		2,
+		0,
+		0
+	);
+
+	return lastDayOfPreviousMonth.toISOString();
 }

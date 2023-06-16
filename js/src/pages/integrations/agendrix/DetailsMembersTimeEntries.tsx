@@ -39,7 +39,7 @@ const DetailsMembersTimeEntries: React.FC = (props: any) => {
     const fetchData = async (): Promise<void> => {
       try {
         const response = await axios.get(
-          `http://localhost:4444/api/v2/test/searchCriteria?id_rider=${membersAE.id}`,
+          `http://54.38.191.163:4444/api/v2/test/searchCriteria?id_rider=${membersAE.id}`,
           {
             headers: {
               "Access-Control-Allow-Origin": "*",

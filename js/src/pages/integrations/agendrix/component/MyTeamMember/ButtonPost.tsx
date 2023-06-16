@@ -10,7 +10,7 @@ const ButtonPost: React.FC<Rider> = ({ liste }) => {
   const [SheetId, setSheetId] = useState<string>("Sheet ID");
 
   const handleClick = async () => {
-    await fetch("http://localhost:4444/api/v2/test/ping", {
+    await fetch("http://54.38.191.163:3000/api/v2/test/ping", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

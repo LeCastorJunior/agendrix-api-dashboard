@@ -8,7 +8,7 @@ import api from "./api";
 
 dotenv.config();
 var corsOptions = {
-  origin: "https://localhost:3000",
+  origin: "https://54.38.191.163:3001",
   credentials: true,
 };
 

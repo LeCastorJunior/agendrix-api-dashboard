@@ -4,7 +4,7 @@
 
 const agendrixAPI = "https://api.agendrix.com/v1";
 const oauthProvider = "https://app.agendrix.com/oauth";
-const serverAPI = "http://localhost:4000/api";
-const redirectURI = "https://localhost:3000/home";
+const serverAPI = "http://54.38.191.163:4000/api";
+const redirectURI = "https://54.38.191.163:3001/home";
 
 export { agendrixAPI, oauthProvider, serverAPI, redirectURI };
